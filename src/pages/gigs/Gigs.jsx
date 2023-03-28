@@ -4,6 +4,7 @@ import { AiOutlineDown } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import newRequest from "../../utils/newRequest";
 
 const Gigs = () => {
   // const data = useLocation();
@@ -15,9 +16,12 @@ const Gigs = () => {
   const minRef = useRef();
   const maxRef = useRef();
   const fetchGigs = async () => {
-    const response = await axios.get(
-      `http://localhost:8800/api/gigs?${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`
+    const response = await newRequest.get(
+      "/gigs?${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}"
     );
+    // axios.get(
+    //   `https://fiverrapp.onrender.com/api/gigs?${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`
+    // );
     console.log("response", response.data);
     return response.data;
   };

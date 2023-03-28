@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import newRequest from "../../utils/newRequest";
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
@@ -27,7 +28,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     console.log("handleLogout called");
-    await axios.get("http://localhost:8800/api/auth/logout").then((res) => {
+    await newRequest.get("/auth/logout").then((res) => {
       localStorage.setItem("currentUser", null);
       navigate("/");
     });

@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import Input from "../../components/input/Input";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
+import newRequest from "../../utils/newRequest";
 
 const Login = () => {
   const [loginError, setLoginError] = useState();
@@ -26,18 +27,11 @@ const Login = () => {
   // };
 
   const callLoginApi = async (values, bag) => {
-    await axios
-      .post(
-        "http://localhost:8800/api/auth/login",
-        {
-          email: values.email,
-          password: values.password,
-        },
-        // config,
-        {
-          withCredentials: true,
-        }
-      )
+    await newRequest
+      .post("/auth/login", {
+        email: values.email,
+        password: values.password,
+      })
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("currentUser", JSON.stringify(res.data));
@@ -50,6 +44,18 @@ const Login = () => {
           setLoginError("");
         }, 3000);
       });
+
+    // await axios
+    //   .post(
+    //     "https://fiverrapp.onrender.com/api/auth/login",
+    //     {
+    //       email: values.email,
+    //       password: values.password,
+    //     },
+    // config,
+    // {
+    //   withCredentials: true,
+    // }
   };
   return (
     <div className="flex flex-col my-12 flex-grow ">

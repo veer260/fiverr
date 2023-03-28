@@ -5,6 +5,7 @@ import Reviews from "../../components/reviews/Reviews";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
 import axios from "axios";
+import newRequest from "../../utils/newRequest";
 
 const Gig = () => {
   const { id } = useParams();
@@ -17,7 +18,7 @@ const Gig = () => {
   } = useQuery({
     queryKey: ["gig"],
     queryFn: () =>
-      axios.get(`http://localhost:8800/api/gigs/single/${id}`).then((res) => {
+      newRequest.get(`/gigs/single/${id}`).then((res) => {
         console.log;
         return res.data;
       }),
@@ -29,9 +30,7 @@ const Gig = () => {
 
   const fetchUser = async () => {
     // console.log("dbdjbj");
-    const response = await axios.get(
-      `http://localhost:8800/api/users/${gig?.userId}`
-    );
+    const response = await newRequest.get(`/api/users/${gig?.userId}`);
 
     return response.data;
   };
