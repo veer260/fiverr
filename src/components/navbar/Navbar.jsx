@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   const handleLogout = async () => {
-    console.log("handleLogout called");
+    // console.log("handleLogout called");
     await newRequest.get("/auth/logout").then((res) => {
       localStorage.setItem("currentUser", null);
       navigate("/");
