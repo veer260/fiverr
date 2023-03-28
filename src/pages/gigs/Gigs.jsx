@@ -17,7 +17,7 @@ const Gigs = () => {
   const maxRef = useRef();
   const fetchGigs = async () => {
     const response = await newRequest.get(
-      "/gigs?${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}"
+      `/gigs?${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`
     );
     // axios.get(
     //   `https://fiverrapp.onrender.com/api/gigs?${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`
