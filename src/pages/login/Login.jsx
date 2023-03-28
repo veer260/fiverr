@@ -28,7 +28,7 @@ const Login = () => {
   const callLoginApi = async (values, bag) => {
     await axios
       .post(
-        "https://fiverr-server.onrender.com/api/auth/login",
+        "http://localhost:8800/api/auth/login",
         {
           email: values.email,
           password: values.password,
