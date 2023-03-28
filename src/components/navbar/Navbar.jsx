@@ -54,7 +54,10 @@ const Navbar = () => {
         </div>
         <div className="flex space-x-4 items-center">
           <span className="  font-semibold "> Fiverr Business</span>
-          <span className="  font-semibold"> Explore</span>
+          <Link to="/gigs" className="  font-semibold">
+            {" "}
+            Explore
+          </Link>
           <span className="  font-semibold"> English</span>
           {!currentUser?.isSeller && (
             <span className="  font-semibold"> Become a seller</span>
