@@ -2,13 +2,15 @@ import React from "react";
 import { BiTimeFive } from "react-icons/bi";
 import { GrPowerCycle } from "react-icons/gr";
 import { BsCheck } from "react-icons/bs";
+import newRequest from "../../utils/newRequest";
 
 const GigRight = ({ gig }) => {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   // console.log("user: ", currentUser);
   const disable = currentUser._id == gig.userId ? " opacity-40" : "";
-  const handleClick = () => {
-    console.log("continue called");
+  const handleClick = async () => {
+    // console.log("gigId:", gig._id);
+    const newOrder = await newRequest.post(`/orders/${gig._id}`);
   };
   return (
     <div className=" p-4 border-2">
@@ -40,7 +42,7 @@ const GigRight = ({ gig }) => {
         })}
 
         <button
-          disabled
+          // disabled
           onClick={handleClick}
           className={
             "p-2 mt-2 bg-green-500 text-white font-semibold " + disable
