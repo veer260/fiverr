@@ -4,6 +4,12 @@ import { GrPowerCycle } from "react-icons/gr";
 import { BsCheck } from "react-icons/bs";
 
 const GigRight = ({ gig }) => {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  // console.log("user: ", currentUser);
+  const disable = currentUser._id == gig.userId ? " opacity-40" : "";
+  const handleClick = () => {
+    console.log("continue called");
+  };
   return (
     <div className=" p-4 border-2">
       <header className="flex justify-between  w-full items-center font-semibold">
@@ -33,7 +39,13 @@ const GigRight = ({ gig }) => {
           );
         })}
 
-        <button className="p-2 mt-2 bg-green-500 text-white font-semibold">
+        <button
+          disabled
+          onClick={handleClick}
+          className={
+            "p-2 mt-2 bg-green-500 text-white font-semibold " + disable
+          }
+        >
           Continue
         </button>
       </div>
