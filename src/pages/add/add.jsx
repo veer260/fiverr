@@ -125,7 +125,9 @@ const Add = () => {
             className="border-2 p-2"
             name="cat"
             id="cats"
+            // defaultValue={}
           >
+            <option value="default"></option>
             <option value="design">Design</option>
             <option value="web">Web Development</option>
             <option value="animation">Animation</option>
